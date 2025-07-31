@@ -6,7 +6,7 @@ Each POC is created to explore and demonstrate the working of key Java concepts 
 
 ---
 
-## 📂 Repository Structure
+<!-- ## 📂 Repository Structure
 
 Each folder in this repository represents a separate concept, such as:
 
@@ -22,6 +22,7 @@ Each folder in this repository represents a separate concept, such as:
 - And more...
 
 ---
+-->
 
 
 ## 📥 How to Clone This Repository
