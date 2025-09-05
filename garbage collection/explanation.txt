@@ -1,0 +1,75 @@
+Step-by-Step with Memory Diagram
+Step 1: Person p1 = new Person("Alice");
+
+p1 reference stored in Stack.
+
+"Alice" object created in Heap.
+
+Stack                Heap
+----------------    --------------------
+p1 ──────────────▶  Person("Alice")
+
+Step 2: Person p2 = new Person("Bob");
+
+p2 reference in Stack.
+
+"Bob" object in Heap.
+
+Stack                Heap
+----------------    --------------------
+p1 ──────────────▶  Person("Alice")
+p2 ──────────────▶  Person("Bob")
+
+Step 3: p1 = null;
+Now p1 no longer points to "Alice".
+"Alice" object in Heap becomes unreachable → garbage.
+
+Stack                Heap
+----------------    --------------------
+p1 = null           Person("Alice") ❌ (Garbage)
+p2 ──────────────▶  Person("Bob")
+
+Step 4: p2 = new Person("Charlie");
+p2 now points to "Charlie".
+"Bob" object becomes garbage.
+
+Stack                Heap
+----------------    --------------------
+p1 = null           Person("Alice") ❌ (Garbage)
+p2 ──────────────▶  Person("Charlie")
+                    Person("Bob") ❌ (Garbage)
+
+Step 5: System.gc();
+GC runs (not guaranteed immediately).
+"Alice" and "Bob" objects are cleared from Heap.
+Only "Charlie" remains.
+
+Stack                Heap
+----------------    --------------------
+p1 = null           Person("Charlie")
+p2 ──────────────▶
+
+🔹 GC Workflow Here
+JVM marks all reachable objects → "Charlie".
+"Alice" and "Bob" are unreachable, so marked for deletion.
+GC sweeps them.
+(Optional) Compacts Heap to remove fragmentation.
+
+🔹 Visual Flow (Simplified)
+Step 1: p1 -> Alice, p2 -> Bob
+Heap: [Alice][Bob]
+
+Step 2: p1=null
+Heap: [Alice ❌][Bob]
+
+Step 3: p2 -> Charlie
+Heap: [Alice ❌][Bob ❌][Charlie]
+
+Step 4: GC cleans
+Heap: [Charlie]
+
+🔹 Real-Life Analogy (Hinglish)
+p1 and p2 are like labels (stickers) on boxes in a warehouse.
+When you remove the label (set to null), that box (object) becomes orphaned.
+The GC = Safaiwala comes and throws away all unlabeled boxes.
+Only boxes with labels (reachable objects) remain.
