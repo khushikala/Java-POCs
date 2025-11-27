@@ -12,7 +12,7 @@ public class Main {
 //        list.add(2);
 //        list.add(4);
 //        Collections.sort(list, new MyClass2());
-////        System.out.println("Sorted List in Ascending Order: " + list);
+////      System.out.println("Sorted List in Ascending Order: " + list);
 //        System.out.println("Sorted List in Descending Order: " + list);
 //
 //        // With Lambda Expression
